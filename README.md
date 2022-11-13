@@ -24,7 +24,7 @@ import (
 func main() {
 	m := hashing.NewManager(&hashing.Config{
 		Driver: "bcrypt",
-    })
+	})
 	
 	m.Driver().Make("password")
 	m.Driver("bcrypt").Make("password")
