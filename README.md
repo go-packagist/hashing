@@ -17,7 +17,6 @@ go get github.com/go-packagist/hashing
 package main
 
 import (
-    "fmt"
     "github.com/go-packagist/hashing"
 )
 
