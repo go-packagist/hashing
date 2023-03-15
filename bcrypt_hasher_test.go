@@ -10,11 +10,9 @@ func TestNewBcryptHasher(t *testing.T) {
 
 	hash := NewBcryptHasher()
 	hashedValue, _ := hash.Make(value)
-
-	assert.Equal(t, true, hash.Check(value, hashedValue))
+	assert.True(t, hash.Check(value, hashedValue))
 
 	hash2 := &BcryptHasher{}
 	hashedValue2 := hash2.MustMake(value)
-
-	assert.Equal(t, true, hash2.Check(value, hashedValue2))
+	assert.True(t, hash2.Check(value, hashedValue2))
 }
