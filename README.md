@@ -1,5 +1,6 @@
 # hashing
 
+
 [![Go Version](https://badgen.net/github/release/go-packagist/hashing/stable)](https://github.com/go-packagist/hashing/releases)
 [![GoDoc](https://pkg.go.dev/badge/github.com/go-packagist/hashing)](https://pkg.go.dev/github.com/go-packagist/hashing)
 [![codecov](https://codecov.io/gh/go-packagist/hashing/branch/master/graph/badge.svg?token=5TWGQ9DIRU)](https://codecov.io/gh/go-packagist/hashing)
