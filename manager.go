@@ -24,7 +24,7 @@ type Config struct {
 func NewManager(config *Config) *Manager {
 	return &Manager{
 		config:  config,
-		drivers: make(map[string]Hasher),
+		drivers: make(map[string]Hasher, 5),
 		rw:      &sync.RWMutex{},
 	}
 }
