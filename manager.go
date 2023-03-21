@@ -48,6 +48,8 @@ func (m *Manager) resolve(driver string) Hasher {
 		hasher = m.createBcryptHasher()
 	case "md5":
 		hasher = m.createMd5Hasher()
+	case "sha1":
+		hasher = m.createSha1Hasher()
 	default:
 		panic(fmt.Sprintf("hashing driver %s is not supported", driver))
 	}
@@ -65,6 +67,11 @@ func (m *Manager) createBcryptHasher() Hasher {
 // createMd5Hasher creates a new md5 hasher instance.
 func (m *Manager) createMd5Hasher() Hasher {
 	return NewMd5Hasher()
+}
+
+// createSha1Hasher creates a new sha1 hasher instance.
+func (m *Manager) createSha1Hasher() Hasher {
+	return NewSha1Hasher()
 }
 
 // getDefaultDriver gets the default driver name.
