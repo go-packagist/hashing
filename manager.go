@@ -2,11 +2,13 @@ package hashing
 
 import (
 	"fmt"
+	"sync"
 )
 
 type Manager struct {
 	config  *Config
 	drivers map[string]Hasher
+	rw      *sync.RWMutex
 }
 
 type Config struct {
@@ -23,6 +25,7 @@ func NewManager(config *Config) *Manager {
 	return &Manager{
 		config:  config,
 		drivers: make(map[string]Hasher),
+		rw:      &sync.RWMutex{},
 	}
 }
 
@@ -37,8 +40,10 @@ func (m *Manager) Driver(driver ...string) Hasher {
 
 // resolve gets the hasher instance by name.
 func (m *Manager) resolve(driver string) Hasher {
-	hasher, ok := m.drivers[driver]
+	m.rw.Lock()
+	defer m.rw.Unlock()
 
+	hasher, ok := m.drivers[driver]
 	if ok {
 		return hasher
 	}

@@ -32,3 +32,15 @@ func TestManager(t *testing.T) {
 	// unknown driver
 	assert.Panicsf(t, func() { m.Driver("unknown") }, "unknown driver: unknown")
 }
+
+func BenchmarkManager(b *testing.B) {
+	m := NewManager(&Config{
+		Driver: "bcrypt",
+	})
+
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			go m.Driver("md5").MustMake("123456")
+		}
+	})
+}
