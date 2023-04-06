@@ -35,5 +35,11 @@ func (m *Md5Hasher) MustMake(value string) string {
 
 // Check checks the given value and hashed value.
 func (m *Md5Hasher) Check(value, hashedValue string) bool {
-	return m.MustMake(value) == hashedValue
+	hv, err := m.Make(value)
+
+	if err != nil {
+		return false
+	}
+
+	return hv == hashedValue
 }
