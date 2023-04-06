@@ -83,3 +83,18 @@ func (m *Manager) createSha1Hasher() Hasher {
 func (m *Manager) getDefaultDriver() string {
 	return m.config.Driver
 }
+
+// Make creates a hash value for the given value.
+func (m *Manager) Make(value string) (string, error) {
+	return m.Driver().Make(value)
+}
+
+// MustMake creates a hash value for the given value.
+func (m *Manager) MustMake(value string) string {
+	return m.Driver().MustMake(value)
+}
+
+// Check checks the given value is equal to the hashed value.
+func (m *Manager) Check(value, hashedValue string) bool {
+	return m.Driver().Check(value, hashedValue)
+}
