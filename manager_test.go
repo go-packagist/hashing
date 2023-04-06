@@ -16,6 +16,9 @@ func TestManager(t *testing.T) {
 	// default driver
 	assert.True(t, NewBcryptHasher().Check("123456", m.Driver().MustMake("123456")))
 	assert.False(t, NewMd5Hasher().Check("123456", m.Driver().MustMake("123456")))
+	assert.True(t, NewBcryptHasher().Check("123456", m.MustMake("123456")))
+	assert.False(t, NewMd5Hasher().Check("123456", m.MustMake("123456")))
+	assert.True(t, m.Check("123456", m.MustMake("123456")))
 
 	// bcrypt driver
 	assert.True(t, NewBcryptHasher().Check("123456", m.Driver("bcrypt").MustMake("123456")))
