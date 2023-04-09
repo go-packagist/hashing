@@ -2,12 +2,13 @@ package hashing
 
 import (
 	"fmt"
+	"github.com/go-packagist/contracts/hashing"
 	"sync"
 )
 
 type Manager struct {
 	config  *Config
-	drivers map[string]Hasher
+	drivers map[string]hashing.Hasher
 	rw      *sync.RWMutex
 }
 
@@ -24,13 +25,13 @@ type Config struct {
 func NewManager(config *Config) *Manager {
 	return &Manager{
 		config:  config,
-		drivers: make(map[string]Hasher, 5),
+		drivers: make(map[string]hashing.Hasher, 5),
 		rw:      &sync.RWMutex{},
 	}
 }
 
 // Driver gets the hasher instance by driver name.
-func (m *Manager) Driver(driver ...string) Hasher {
+func (m *Manager) Driver(driver ...string) hashing.Hasher {
 	if len(driver) > 0 {
 		return m.resolve(driver[0])
 	}
@@ -39,7 +40,7 @@ func (m *Manager) Driver(driver ...string) Hasher {
 }
 
 // resolve gets the hasher instance by name.
-func (m *Manager) resolve(driver string) Hasher {
+func (m *Manager) resolve(driver string) hashing.Hasher {
 	m.rw.Lock()
 	defer m.rw.Unlock()
 
@@ -65,17 +66,17 @@ func (m *Manager) resolve(driver string) Hasher {
 }
 
 // createBcryptHasher creates a new bcrypt hasher instance.
-func (m *Manager) createBcryptHasher() Hasher {
+func (m *Manager) createBcryptHasher() hashing.Hasher {
 	return NewBcryptHasher()
 }
 
 // createMd5Hasher creates a new md5 hasher instance.
-func (m *Manager) createMd5Hasher() Hasher {
+func (m *Manager) createMd5Hasher() hashing.Hasher {
 	return NewMd5Hasher()
 }
 
 // createSha1Hasher creates a new sha1 hasher instance.
-func (m *Manager) createSha1Hasher() Hasher {
+func (m *Manager) createSha1Hasher() hashing.Hasher {
 	return NewSha1Hasher()
 }
 
