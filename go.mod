@@ -3,7 +3,6 @@ module github.com/go-packagist/hashing
 go 1.20
 
 require (
-	github.com/go-packagist/contracts v1.0.0
 	github.com/stretchr/testify v1.8.2
 	golang.org/x/crypto v0.2.0
 )
