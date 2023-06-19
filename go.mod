@@ -1,4 +1,4 @@
-module github.com/go-packagist/hashing
+module github.com/go-packagist/hashing/v2
 
 go 1.20
 
