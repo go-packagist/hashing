@@ -2,7 +2,7 @@
 
 ![Go](https://badgen.net/badge/Go/%3E=1.17/orange)
 [![Go Version](https://badgen.net/github/release/go-packagist/hashing/stable)](https://github.com/go-packagist/hashing/releases)
-[![GoDoc](https://pkg.go.dev/badge/github.com/go-packagist/hashing)](https://pkg.go.dev/github.com/go-packagist/hashing)
+[![GoDoc](https://pkg.go.dev/badge/github.com/go-packagist/hashing/v2)](https://pkg.go.dev/github.com/go-packagist/hashing/v2)
 [![codecov](https://codecov.io/gh/go-packagist/hashing/branch/master/graph/badge.svg?token=5TWGQ9DIRU)](https://codecov.io/gh/go-packagist/hashing)
 [![Go Report Card](https://goreportcard.com/badge/github.com/go-packagist/hashing)](https://goreportcard.com/report/github.com/go-packagist/hashing)
 [![tests](https://github.com/go-packagist/hashing/actions/workflows/go.yml/badge.svg)](https://github.com/go-packagist/hashing/actions/workflows/go.yml)
